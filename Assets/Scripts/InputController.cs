@@ -13,6 +13,7 @@ public class InputController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         m_jumpTrait = target.GetComponent<TraitJump>();
+        m_crouchTrait = target.GetComponent<TraitCrouch>();
         m_ledgeTrait = target.GetComponent<TraitLedgeGrab>();
         m_controller = target.GetComponent<EntityController>();
 	}
@@ -36,6 +37,12 @@ public class InputController : MonoBehaviour {
         // Early Ending Jump
         if (Input.GetKeyUp(KeyCode.Space)) {
             if (m_jumpTrait) m_jumpTrait.OnJumpInputUp();
+        }
+
+        // Ducking
+        if (directionalInput.y < 0)
+        {
+
         }
 	}
 }
