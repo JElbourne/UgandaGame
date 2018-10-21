@@ -9,6 +9,7 @@ public class InputController : MonoBehaviour {
     EntityController m_controller;
     TraitJump m_jumpTrait;
     TraitLedgeGrab m_ledgeTrait;
+    TraitCrouch m_crouchTrait;
 
 	// Use this for initialization
 	void Start () {
@@ -17,15 +18,15 @@ public class InputController : MonoBehaviour {
         m_ledgeTrait = target.GetComponent<TraitLedgeGrab>();
         m_controller = target.GetComponent<EntityController>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update() {
         // Directional moving
         Vector2 directionalInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         m_controller.SetDirectionalInput(directionalInput);
 
         // Jumping
-        if (Input.GetKeyDown (KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.Space)) {
             if (m_ledgeTrait && m_controller.collisions.ledgeIsGrabbed)
             {
                 m_ledgeTrait.ClimbLedge();
@@ -39,10 +40,14 @@ public class InputController : MonoBehaviour {
             if (m_jumpTrait) m_jumpTrait.OnJumpInputUp();
         }
 
-        // Ducking
-        if (directionalInput.y < 0)
+        // Crouching
+        if (Input.GetButtonDown("Crouch"))
         {
-
+            if (m_crouchTrait) m_crouchTrait.OnCrouchInputDown();
         }
-	}
+        if (Input.GetButtonUp("Crouch"))
+        {
+            if (m_crouchTrait) m_crouchTrait.OnCrouchInputUp();
+        }
+    }
 }

@@ -44,7 +44,7 @@ public class TraitPhysics : MonoBehaviour {
 
 	public void CalculateVelocity()
     {
-        float targetVelocityX = m_controller.directionalInput.x * m_controller.moveSpeed;
+        float targetVelocityX = m_controller.directionalInput.x * m_controller.CalculateMoveSpeed();
         velocity.x = Mathf.SmoothDamp(
             velocity.x,
             targetVelocityX,

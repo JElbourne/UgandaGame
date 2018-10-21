@@ -39,6 +39,9 @@ public class TraitJump : MonoBehaviour {
 
 	public void OnJumpInputDown()
     {
+        // Player can not jump if crouching.
+        if (m_controller.collisions.isCrouching) return;
+
         wallDirX = (m_controller.collisions.left) ? -1 : 1;
 
         // Jumping when sliding on a wall

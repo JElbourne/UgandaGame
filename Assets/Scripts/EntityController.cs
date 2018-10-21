@@ -4,6 +4,7 @@
 public class EntityController : RaycastController {
     
     public float moveSpeed = 6;
+    public float crouchSpeedPercentage = 0.50f;
     public float maxSlopeAngle = 60;
     public CollisionInfo collisions;
 
@@ -42,6 +43,13 @@ public class EntityController : RaycastController {
     public void SetDirectionalInput(Vector2 input)
     {
         directionalInput = input;
+    }
+
+    public float CalculateMoveSpeed()
+    {
+        if (collisions.isCrouching)
+            return moveSpeed * crouchSpeedPercentage;
+        return moveSpeed;
     }
 
     public void HorizontalCollisions(ref Vector2 moveAmount)
@@ -199,6 +207,7 @@ public class EntityController : RaycastController {
         public Vector2 moveAmountOld;
         public int faceDir;
         public bool fallingThroughPlatform;
+        public bool isCrouching;
 
         public void Reset() {
             above = below = false;
