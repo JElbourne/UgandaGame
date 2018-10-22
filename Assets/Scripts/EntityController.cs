@@ -4,7 +4,6 @@
 public class EntityController : RaycastController {
     
     public float moveSpeed = 6;
-    public float crouchSpeedPercentage = 0.50f;
     public float maxSlopeAngle = 60;
     public CollisionInfo collisions;
 
@@ -13,6 +12,7 @@ public class EntityController : RaycastController {
 
     TraitPhysics m_physics;
     TraitMove m_moveTrait;
+    TraitCrouch m_crouchTrait;
     TraitWallSlide m_wallSlide;
     TraitLedgeGrab m_ledgeGrab;
 
@@ -21,6 +21,7 @@ public class EntityController : RaycastController {
         base.Awake();
         m_physics = GetComponent<TraitPhysics>();
         m_moveTrait = GetComponent<TraitMove>();
+        m_crouchTrait = GetComponent<TraitCrouch>();
         m_wallSlide = GetComponent<TraitWallSlide>();
     }
 
@@ -47,8 +48,8 @@ public class EntityController : RaycastController {
 
     public float CalculateMoveSpeed()
     {
-        if (collisions.isCrouching)
-            return moveSpeed * crouchSpeedPercentage;
+        if (m_crouchTrait && collisions.isCrouching)
+            return moveSpeed * m_crouchTrait.CrouchSpeedPercentage;
         return moveSpeed;
     }
 
