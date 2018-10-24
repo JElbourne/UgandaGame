@@ -49,7 +49,7 @@ public class EntityController : RaycastController {
     public float CalculateMoveSpeed()
     {
         if (m_crouchTrait && collisions.isCrouching)
-            return moveSpeed * m_crouchTrait.CrouchSpeedPercentage;
+            return moveSpeed * m_crouchTrait.CrouchMoveSpeedPercentage;
         return moveSpeed;
     }
 
