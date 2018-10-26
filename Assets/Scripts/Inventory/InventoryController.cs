@@ -19,6 +19,11 @@ public class InventoryController : MonoBehaviour {
         }
     }
 
+    private List<BraceletItem> m_bracelets = new List<BraceletItem>();
+
+    [SerializeField]
+    private InventoryGroupButton[] m_inventoryGroupButtons;
+
     //For Debugging Purpose
     [SerializeField]
     private ItemObject[] items;
@@ -29,13 +34,36 @@ public class InventoryController : MonoBehaviour {
         bracelet.Instantiate(16);
         bracelet.Use();
     }
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    private void Update()
+    {
+        // For Debugging
+        if(Input.GetKeyDown(KeyCode.J))
+        {
+            BraceletItem bracelet = (BraceletItem)Instantiate(items[0]);
+            bracelet.Instantiate(16);
+            bracelet.Use();
+        }
+    }
+
+    public bool CanAddInventoryGroup
+    {
+        get
+        {
+            return m_bracelets.Count < m_inventoryGroupButtons.Length;
+        }
+    }
+
+    public void AddGroup(BraceletItem _bracelet)
+    {
+        foreach (InventoryGroupButton inventoryGroupButton in m_inventoryGroupButtons)
+        {
+            if(inventoryGroupButton.Bracelet == null)
+            {
+                inventoryGroupButton.Bracelet = _bracelet;
+                m_bracelets.Add(_bracelet);
+                break;
+            }
+        }
+    }
 }

@@ -27,7 +27,12 @@ public class BraceletItem : ItemObject, IUseable {
 
     public void Use()
     {
-        InventoryGroup = Instantiate(inventoryGroupPrefab, InventoryController.Instance.transform).GetComponent<InventoryGroup>();
-        InventoryGroup.AddSlots(slots);
+        if (InventoryController.Instance.CanAddInventoryGroup)
+        {
+            InventoryGroup = Instantiate(inventoryGroupPrefab, InventoryController.Instance.transform).GetComponent<InventoryGroup>();
+            InventoryGroup.AddSlots(slots);
+
+            InventoryController.Instance.AddGroup(this);
+        }
     }
 }

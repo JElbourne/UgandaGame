@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bd76311fc0421044ba29613f79fdb3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slotPrefab: {fileID: 1928975601079696, guid: 41749e9838d2b0d4bbcd7716eb5621a5, type: 2}
 --- !u!222 &222194901552804216
 CanvasRenderer:
   m_ObjectHideFlags: 1
