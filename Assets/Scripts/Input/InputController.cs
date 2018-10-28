@@ -21,6 +21,9 @@ public class InputController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+
+        CheckInputForUI();
+
         // Directional moving
         Vector2 directionalInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         m_controller.SetDirectionalInput(directionalInput);
@@ -49,5 +52,15 @@ public class InputController : MonoBehaviour {
         {
             if (m_crouchTrait) m_crouchTrait.OnCrouchInputUp();
         }
+    }
+
+    private void CheckInputForUI()
+    {
+        // Open all Inventory Groups
+        if (Input.GetKeyUp(KeyCode.Q))
+        {
+            InventoryController.Instance.OpenClose();
+        }
+
     }
 }

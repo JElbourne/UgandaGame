@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class InventoryGroupButton : MonoBehaviour {
+public class InventoryGroupButton : MonoBehaviour, IPointerClickHandler {
 
     private BraceletItem m_bracelet;
 
@@ -26,6 +27,14 @@ public class InventoryGroupButton : MonoBehaviour {
                 GetComponent<Image>().sprite = empty;
             }
             m_bracelet = value;
+        }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (m_bracelet != null)
+        {
+            m_bracelet.InventoryGroup.OpenClose();
         }
     }
 }

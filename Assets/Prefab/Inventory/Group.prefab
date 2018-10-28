@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 224489278739174758}
   - component: {fileID: 222194901552804216}
   - component: {fileID: 114245923589431922}
+  - component: {fileID: 225318457352413482}
   - component: {fileID: 114237395154402152}
   - component: {fileID: 114451609123039970}
   - component: {fileID: 114656850228739376}
@@ -130,3 +131,14 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!225 &225318457352413482
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1337120786154498}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

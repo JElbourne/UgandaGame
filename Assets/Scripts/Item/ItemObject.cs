@@ -30,7 +30,7 @@ public abstract class ItemObject : ScriptableObject {
 
     }
 
-    protected InventorySlot Slot
+    public InventorySlot Slot
     {
         get
         {
@@ -40,6 +40,14 @@ public abstract class ItemObject : ScriptableObject {
         set
         {
             slot = value;
+        }
+    }
+
+    public void Remove()
+    {
+        if(Slot != null)
+        {
+            Slot.RemoveItem(this);
         }
     }
 }

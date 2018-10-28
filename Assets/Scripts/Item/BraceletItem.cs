@@ -29,6 +29,7 @@ public class BraceletItem : ItemObject, IUseable {
     {
         if (InventoryController.Instance.CanAddInventoryGroup)
         {
+            Remove();
             InventoryGroup = Instantiate(inventoryGroupPrefab, InventoryController.Instance.transform).GetComponent<InventoryGroup>();
             InventoryGroup.AddSlots(slots);
 
